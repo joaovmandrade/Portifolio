@@ -45,33 +45,10 @@ export function ContactSection() {
               {contact.phone}
             </a>
           </li>
-          <li>
-            <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
-              Redes
-            </p>
-            <div className="mt-2 flex flex-wrap gap-4 text-sm">
-              <a
-                href={contact.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-slate-300 underline-offset-4 hover:text-blue-400 hover:underline"
-              >
-                GitHub
-              </a>
-              <a
-                href={contact.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-slate-300 underline-offset-4 hover:text-blue-400 hover:underline"
-              >
-                LinkedIn
-              </a>
-            </div>
-          </li>
         </ul>
         <div className="mt-8 border-t border-slate-800/80 pt-6">
           <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-500">
-            Ícones rápidos
+            Redes
           </p>
           <SocialLinks variant="inline" />
         </div>
