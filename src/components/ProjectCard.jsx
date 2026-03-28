@@ -10,10 +10,12 @@ export function ProjectCard({ project, index = 0 }) {
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      layout
+      initial={{ opacity: 0, y: 24, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.3, ease: 'easeOut' } }}
       viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.45, delay: index * 0.08 }}
+      transition={{ duration: 0.45, delay: index * 0.05 }}
       className="group flex flex-col overflow-hidden rounded-2xl border border-slate-800/90 bg-gradient-to-b from-slate-900/80 to-slate-950/90 shadow-xl shadow-black/20 transition-colors hover:border-slate-700/90"
     >
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-900">
