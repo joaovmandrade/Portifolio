@@ -1,6 +1,7 @@
 import cineverse from "../assets/cineverse.png"
 import dashboard from "../assets/dashboard.png"
 import cardapio from "../assets/cardapio.png"
+import e_commerce from "../assets/e-commerce.png"
 
 /**
  * Projetos do portfólio — edite aqui para adicionar links, imagens e novos cards.
@@ -38,5 +39,15 @@ export const projects = [
     image: cardapio,
     liveUrl: "https://cardapio-nu.vercel.app/",
     repoUrl: "https://github.com/joaovmandrade/cardapio",
+  },
+  {
+    id: "loja-online",
+    title: "E-commerce",
+    description:
+      "Aplicação de e-commerce moderna com foco em experiência do usuário e conversão, simulando um ambiente real de vendas online. O sistema permite navegação por múltiplas categorias, busca dinâmica e aplicação de filtros, além de integração direta com WhatsApp para fechamento de pedidos.",
+    technologies: ["React", "TypeScript", "TailwindCSS", "Supabase"],
+    image: e_commerce,
+    liveUrl: "https://loja-online-ruddy-omega.vercel.app/",
+    repoUrl: "https://github.com/joaovmandrade/Loja-Online",
   },
 ]
