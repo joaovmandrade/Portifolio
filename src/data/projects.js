@@ -50,14 +50,4 @@ export const projects = [
     liveUrl: "https://loja-online-ruddy-omega.vercel.app/",
     repoUrl: "https://github.com/joaovmandrade/Loja-Online",
   },
-  {
-    id: "loja-online",
-    title: "E-commerce",
-    description:
-      "Aplicação de e-commerce moderna com foco em experiência do usuário e conversão, simulando um ambiente real de vendas online. O sistema permite navegação por múltiplas categorias, busca dinâmica e aplicação de filtros, além de integração direta com WhatsApp para fechamento de pedidos.",
-    technologies: ["React", "TypeScript", "TailwindCSS", "Supabase"],
-    image: e_commerce,
-    liveUrl: "https://loja-online-ruddy-omega.vercel.app/",
-    repoUrl: "https://github.com/joaovmandrade/Loja-Online",
-  },
 ]
