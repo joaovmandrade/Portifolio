@@ -1,12 +1,12 @@
 export const hero = {
   name: "João Vitor Andrade",
-  title: "Desenvolvedor Front-End Júnior | Web & Mobile",
+  title: "Desenvolvedor FullStack Júnior | Web & Mobile",
   description:
-    "Desenvolvedor foco em Front-End | Web e Mobile, com experiência prática em React, React Native, JavaScript, Tailwind CSS, Vite e Supabase.",
+    "Desenvolvedor FullStack | Web e Mobile, com experiência prática em React, React Native, JavaScript, Tailwind CSS, Vite e Supabase.",
 }
 
 export const about = {
-  text: "Sou João Vitor Macieira de Andrade, estudante de Engenharia de Software na UniEVANGÉLICA (7º período) e desenvolvedor com foco em Front-End e Mobile, com experiência prática em React, React Native, JavaScript, Tailwind CSS, Vite e Supabase, além de conhecimentos em Node.js e PostgreSQL. Atualmente atuo como Analista de Suporte N1 na Nexsion, onde desenvolvi uma visão ampla de TI que vai além do código — entendendo infraestrutura, atendimento ao usuário e resolução eficiente de problemas. Essa experiência me deu maturidade técnica e capacidade de comunicação que complementam diretamente minha atuação como desenvolvedor.",
+  text: "Sou João Vitor Macieira de Andrade, estudante de Engenharia de Software na UniEVANGÉLICA (7º período) e desenvolvedor com foco em Web Mobile, com experiência prática em React, React Native, JavaScript, Tailwind CSS, Vite e Supabase, além de conhecimentos em Node.js e PostgreSQL. Atualmente atuo como Analista de Suporte N1 na Nexsion, onde desenvolvi uma visão ampla de TI que vai além do código — entendendo infraestrutura, atendimento ao usuário e resolução eficiente de problemas. Essa experiência me deu maturidade técnica e capacidade de comunicação que complementam diretamente minha atuação como desenvolvedor.",
 }
 
 export const experience = [
@@ -47,7 +47,7 @@ export const skillGroups = [
   {
     id: 'backend',
     label: 'Backend',
-    items: ['Node.js'],
+    items: ['Node.js', 'Next.js'],
   },
   {
     id: 'db',
