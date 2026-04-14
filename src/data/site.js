@@ -15,7 +15,7 @@ export const experience = [
     role: "Analista de Suporte N1",
     company: "Nexsion",
     details:
-      "Analista de Suporte N1 com experiência em serviços de TI, atuando em suporte técnico, infraestrutura e atendimento ao cliente. Realizo análise de bugs no sistema, contribuindo para a estabilidade e melhoria contínua.",
+      "Analista de Suporte N1 com foco em análise de sistemas e resolução de bugs. Atuo na identificação e correção de falhas, garantindo estabilidade e melhoria contínua das aplicações, com experiência em suporte técnico e atendimento ao cliente.",
   },
   {
     id: "jmp",
@@ -47,7 +47,7 @@ export const skillGroups = [
   {
     id: 'backend',
     label: 'Backend',
-    items: ['Node.js', 'Next.js'],
+    items: ['Node.js', 'Next.js', ],
   },
   {
     id: 'db',

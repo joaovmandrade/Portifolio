@@ -4,11 +4,8 @@ import cardapio from "../assets/cardapio.png"
 import e_commerce from "../assets/e-commerce.png"
 
 /**
- * Projetos do portfólio — edite aqui para adicionar links, imagens e novos cards.
- *
- * image: caminho público (ex: '/projects/dashboard.png') após colocar o arquivo em public/projects/
- * liveUrl / repoUrl: string vazia = botão desabilitado até você preencher
- */
+Projetos do portfólio — adicionar links, imagens e novos cards.
+**/
 export const projects = [
   {
     id: "dashboard-pagamentos",
