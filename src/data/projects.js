@@ -12,9 +12,9 @@ export const projects = [
     title: "Dashboard de Pagamentos de Veículo",
     description:
       "Dashboard de Controle de Pagamentos de Veículo — uma aplicação web onde registro e acompanho cada parcela paga do meu carro, com dados armazenados em nuvem e acesso mobile via PWA.",
-    technologies: ["React", "Vite", "Supabase", "PWA"],
+    technologies: ["React", "Vite", "JavaScript", "Supabase", "TailwindCSS", "PWA"],
     image: dashboard,
-    liveUrl: "",
+    liveUrl: "https://relatorio-gasto.vercel.app/",
     repoUrl: "https://github.com/joaovmandrade/relatorio_gasto",
   },
   {
