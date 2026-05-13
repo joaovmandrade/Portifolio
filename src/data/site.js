@@ -1,35 +1,42 @@
 export const hero = {
   name: "João Vitor Andrade",
-  title: "Desenvolvedor FullStack Júnior | Web & Mobile",
+  title: "Desenvolvedor FronEnd | Web & Mobile",
   description:
-    "Desenvolvedor FullStack | Web e Mobile, com experiência prática em React, React Native, JavaScript, Tailwind CSS, Vite e Supabase.",
+    "Desenvolvedor FrontEnd | Web & Mobile, com experiência prática em React, React Native, JavaScript, Tailwind CSS, Vite e Supabase.",
 }
 
 export const about = {
-  text: "Sou João Vitor Macieira de Andrade, estudante de Engenharia de Software na UniEVANGÉLICA (7º período) e desenvolvedor com foco em Web Mobile, com experiência prática em React, React Native, JavaScript, Tailwind CSS, Vite e Supabase, além de conhecimentos em Node.js e PostgreSQL. Atualmente atuo como Analista de Suporte N1 na Nexsion, onde desenvolvi uma visão ampla de TI que vai além do código — entendendo infraestrutura, atendimento ao usuário e resolução eficiente de problemas. Essa experiência me deu maturidade técnica e capacidade de comunicação que complementam diretamente minha atuação como desenvolvedor.",
+  text: "Sou João Vitor Macieira de Andrade, estudante de Engenharia de Software na UniEVANGÉLICA (7º período) e desenvolvedor com foco em Web & Mobile, com experiência prática em React, React Native, JavaScript, Tailwind CSS, Vite e Supabase, além de conhecimentos em Node.js e PostgreSQL. Atualmente atuo como Desenvolvedor Mobile na The Door, onde atuo na migração de aplicação PWA (React) para React Native, modernizando a arquitetura e melhorando a experiência mobile. Responsável pelo desenvolvimento de novos aplicativos do zero, com foco em qualidade de código e boas práticas. Fluxo de trabalho com branches no Git/GitHub para controle de versão e integração ao repositório principal.",
 }
 
 export const experience = [
+  {
+    id: "thedoor",
+    role: "Desenvolvedor Mobile",
+    company: "The Door",
+    details:
+      "Atuando na migração de aplicação PWA (React) para React Native, modernizando a arquitetura e melhorando a experiência mobile. Responsável pelo desenvolvimento de novos aplicativos do zero, com foco em qualidade de código e boas práticas. Fluxo de trabalho com branches no Git/GitHub para controle de versão e integração ao repositório principal.",
+  },
   {
     id: "nexsion",
     role: "Analista de Suporte N1",
     company: "Nexsion",
     details:
-      "Analista de Suporte N1 com foco em análise de sistemas e resolução de bugs. Atuo na identificação e correção de falhas, garantindo estabilidade e melhoria contínua das aplicações, com experiência em suporte técnico e atendimento ao cliente.",
+      "Responsável pela análise de sistemas, resolução de bugs e melhoria contínua de processos no service desk. Atuando na identificação e correção de falhas, garantindo estabilidade das aplicações e cumprimento de SLAs. Mapeamento de fluxos do service desk, identificando gargalos e propondo melhorias operacionais. Gestão e priorização de chamados com organização do backlog de atendimento. Interface entre equipes técnicas e clientes para alinhamento de requisitos e expectativas.",
   },
   {
     id: "jmp",
     role: "Serviços de Escritório",
     company: "JMP Representações",
     details:
-      "Vendas online e presencial, cadastro de clientes, emissão de pedidos e controle de devoluções. Atuação em rotinas comerciais e administrativas, garantindo eficiência e bom atendimento.",
+      "Atuei nas operações comerciais e administrativas da empresa, responsável pelo atendimento a clientes em canais presencial e online. Gerenciei cadastro de clientes, emissão de pedidos e controle de devoluções, garantindo eficiência em cada etapa do processo com atenção aos detalhes e capacidade de equilibrar múltiplas demandas.",
   },
   {
     id: "procon",
     role: "Estágiario de Suporte de TI",
     company: "Procon Goiás",
     details:
-      "Manutenção de computadores e impressoras, suporte técnico aos usuários e auxílio na instalação de sistemas e periféricos. Atuação no atendimento e resolução de demandas de infraestrutura de TI.",
+      "Atuei no suporte técnico aos usuários, responsável pela manutenção de computadores e impressoras, instalação de sistemas e periféricos e resolução de demandas de infraestrutura de TI, garantindo o funcionamento contínuo do ambiente tecnológico.",
   },
 ]
 
