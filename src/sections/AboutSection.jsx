@@ -1,24 +1,44 @@
-import { motion } from 'framer-motion'
-import { SectionShell } from '../components/SectionShell'
-import { SectionHeading } from '../components/SectionHeading'
-import { about } from '../data/site'
+import { useLanguage } from '../context/LanguageContext'
+import { Reveal } from '../components/Reveal'
+
+/** Converte **trechos** em <strong> destacado. */
+function rich(text) {
+  return String(text)
+    .split(/\*\*(.+?)\*\*/g)
+    .map((seg, i) =>
+      i % 2 === 1 ? (
+        <strong key={i} className="font-semibold text-slate-300">
+          {seg}
+        </strong>
+      ) : (
+        seg
+      ),
+    )
+}
 
 export function AboutSection() {
+  const { t } = useLanguage()
+
   return (
-    <SectionShell id="sobre" className="border-t border-slate-800/60 bg-slate-950/30">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-80px' }}
-        transition={{ duration: 0.45 }}
-      >
-        <SectionHeading eyebrow="Sobre" title="Quem sou eu" />
-        <div className="rounded-2xl border border-slate-800/80 bg-slate-900/40 p-6 shadow-lg shadow-black/10 sm:p-8 md:p-10">
-          <p className="text-base leading-relaxed text-slate-400 sm:text-lg">
-            {about.text}
-          </p>
+    <section id="sobre" className="relative mx-auto max-w-[1140px] px-6 py-[100px] scroll-mt-[84px]">
+      <Reveal className="text-center">
+        <p className="mb-3.5 font-mono text-xs uppercase tracking-[0.22em] text-[#60a5fa]">
+          {t.about.eyebrow}
+        </p>
+        <h2 className="mx-auto mb-10 max-w-[760px] font-display text-[clamp(1.9rem,4vw,2.7rem)] font-semibold tracking-[-0.02em] text-[#f1f5f9]">
+          {t.about.heading}
+        </h2>
+      </Reveal>
+
+      <Reveal>
+        <div className="mx-auto flex max-w-[760px] flex-col gap-[18px] text-left text-[16.5px] leading-[1.8] text-slate-400">
+          {t.about.paras.map((p, i) => (
+            <p key={i} className="m-0 [text-wrap:pretty]">
+              {rich(p)}
+            </p>
+          ))}
         </div>
-      </motion.div>
-    </SectionShell>
+      </Reveal>
+    </section>
   )
 }

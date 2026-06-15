@@ -1,13 +1,11 @@
-import { SocialLinks } from './SocialLinks'
+import { useLanguage } from '../context/LanguageContext'
 
 export function Footer() {
-  const year = new Date().getFullYear()
+  const { t } = useLanguage()
   return (
-    <footer className="border-t border-slate-800/80 bg-[#080c14] py-10">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-center gap-6 px-4 sm:flex-row sm:px-6 lg:px-8 text-center">
-        <p className="text-center text-sm text-slate-500">
-          © {year} João Vitor Andrade. Todos os direitos reservados.
-        </p>
+    <footer className="border-t border-slate-400/10 px-6 py-[34px]">
+      <div className="mx-auto max-w-[1140px] text-center">
+        <span className="font-mono text-[11.5px] text-[#64748b]">{t.footer}</span>
       </div>
     </footer>
   )

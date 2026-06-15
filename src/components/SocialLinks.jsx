@@ -1,80 +1,75 @@
-import { contact } from '../data/site'
+import { social } from '../data/i18n'
 
-const iconClass = 'h-5 w-5'
-
-function GitHubIcon() {
+function GitHubIcon({ size = 20 }) {
   return (
-    <svg className={iconClass} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M12 2C6.477 2 2 6.463 2 11.97c0 4.404 2.865 8.14 6.839 9.458.5.092.682-.216.682-.48 0-.236-.008-.864-.013-1.695-2.782.602-3.369-1.337-3.369-1.337-.454-1.151-1.11-1.458-1.11-1.458-.908-.618.069-.606.069-.606 1.003.07 1.531 1.027 1.531 1.027.892 1.524 2.341 1.084 2.91.828.092-.643.35-1.083.636-1.332-2.22-.251-4.555-1.107-4.555-4.927 0-1.088.39-1.979 1.029-2.675-.103-.252-.446-1.266.098-2.638 0 0 .84-.268 2.75 1.022A9.606 9.606 0 0112 6.82c.85.004 1.705.114 2.504.336 1.909-1.29 2.747-1.022 2.747-1.022.546 1.372.202 2.386.1 2.638.64.696 1.028 1.587 1.028 2.675 0 3.83-2.339 4.673-4.566 4.92.359.307.678.915.678 1.846 0 1.332-.012 2.407-.012 2.734 0 .267.18.577.688.48C19.138 20.107 22 16.373 22 11.969 22 6.463 17.522 2 12 2z"
-      />
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.27-.01-1-.02-1.96-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98 0 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z" />
     </svg>
   )
 }
 
-function LinkedInIcon() {
+function LinkedInIcon({ size = 20 }) {
   return (
-    <svg className={iconClass} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z" />
     </svg>
   )
 }
 
-function MailIcon() {
+function WhatsAppIcon({ size = 20 }) {
   return (
-    <svg
-      className={iconClass}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      aria-hidden
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-      />
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.04 21.5h-.01a9.4 9.4 0 0 1-4.79-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.39 9.39 0 0 1-1.44-5.01c0-5.19 4.23-9.41 9.43-9.41 2.52 0 4.88.98 6.66 2.76a9.34 9.34 0 0 1 2.76 6.66c0 5.19-4.23 9.41-9.42 9.41zm8.02-17.43A11.34 11.34 0 0 0 12.04.5C5.8.5.72 5.57.72 11.81c0 2 .52 3.95 1.52 5.67L.62 23.5l6.18-1.62a11.32 11.32 0 0 0 5.24 1.34h.01c6.24 0 11.32-5.07 11.32-11.31 0-3.02-1.18-5.86-3.31-8z" />
     </svg>
   )
 }
 
-export function SocialLinks({ variant = 'footer' }) {
-  const linkBase =
-    variant === 'footer'
-      ? 'rounded-lg p-2 text-slate-500 transition-colors hover:bg-slate-800/60 hover:text-blue-400'
-      : 'rounded-lg p-2 text-slate-400 transition-colors hover:bg-slate-800/50 hover:text-blue-400'
+const NETWORKS = [
+  {
+    key: 'github',
+    label: 'GitHub',
+    href: social.github,
+    Icon: GitHubIcon,
+    hover: 'hover:border-[#0D1117] hover:bg-[#0D1117] hover:text-white hover:shadow-[0_12px_26px_-12px_rgba(0,0,0,0.9)]',
+  },
+  {
+    key: 'linkedin',
+    label: 'LinkedIn',
+    href: social.linkedin,
+    Icon: LinkedInIcon,
+    hover: 'hover:border-[#0A66C2] hover:bg-[#0A66C2] hover:text-white hover:shadow-[0_12px_26px_-12px_rgba(10,102,194,0.9)]',
+  },
+  {
+    key: 'whatsapp',
+    label: 'WhatsApp',
+    href: social.whatsapp,
+    Icon: WhatsAppIcon,
+    hover: 'hover:border-[#25D366] hover:bg-[#25D366] hover:text-white hover:shadow-[0_12px_26px_-12px_rgba(37,211,102,0.9)]',
+  },
+]
+
+export function SocialLinks({ size = 'hero' }) {
+  const isContact = size === 'contact'
+  const boxClass = isContact ? 'h-[46px] w-[46px] rounded-xl' : 'h-11 w-11 rounded-[11px]'
+  const iconSize = isContact ? 21 : 20
 
   return (
-    <div className="flex items-center gap-1">
-      <a
-        href={`mailto:${contact.email}`}
-        className={linkBase}
-        aria-label="Email"
-        title={contact.email}
-      >
-        <MailIcon />
-      </a>
-      <a
-        href={contact.github}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={linkBase}
-        aria-label="GitHub"
-      >
-        <GitHubIcon />
-      </a>
-      <a
-        href={contact.linkedin}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={linkBase}
-        aria-label="LinkedIn"
-      >
-        <LinkedInIcon />
-      </a>
+    <div className={`flex flex-wrap items-center ${isContact ? 'justify-center gap-3' : 'gap-3'}`}>
+      {NETWORKS.map((net) => {
+        const Icon = net.Icon
+        return (
+          <a
+            key={net.key}
+            href={net.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={net.label}
+            className={`inline-flex items-center justify-center border border-slate-400/20 bg-slate-900/50 text-slate-400 transition-all duration-200 hover:-translate-y-0.5 ${boxClass} ${net.hover}`}
+          >
+            <Icon size={iconSize} />
+          </a>
+        )
+      })}
     </div>
   )
 }

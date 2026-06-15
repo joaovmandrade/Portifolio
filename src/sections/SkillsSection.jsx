@@ -1,48 +1,44 @@
-import { motion } from 'framer-motion'
-import { SectionShell } from '../components/SectionShell'
-import { SectionHeading } from '../components/SectionHeading'
-import { skillGroups } from '../data/site'
-
-function SkillPill({ children }) {
-  return (
-    <span className="inline-flex items-center rounded-lg border border-slate-700/50 bg-slate-800/30 px-3 py-1.5 text-xs font-medium text-slate-300 transition-colors hover:border-blue-500/25 hover:bg-slate-800/55 sm:text-sm">
-      {children}
-    </span>
-  )
-}
+import { useLanguage } from '../context/LanguageContext'
+import { Reveal } from '../components/Reveal'
+import { skillGroups } from '../data/i18n'
 
 export function SkillsSection() {
+  const { t } = useLanguage()
+
   return (
-    <SectionShell
-      id="habilidades"
-      className="border-t border-slate-800/60 bg-slate-950/20"
-    >
-      <SectionHeading
-        eyebrow="Stack"
-        title="Habilidades"
-        description="Tecnologias e práticas que uso no dia a dia e em projetos."
-      />
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {skillGroups.map((group, i) => (
-          <motion.div
-            key={group.id}
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.4, delay: i * 0.05 }}
-            className="rounded-2xl border border-slate-800/80 bg-slate-900/40 p-5 transition-shadow hover:shadow-lg hover:shadow-blue-950/20 sm:p-6"
+    <section id="habilidades" className="relative mx-auto max-w-[1140px] px-6 py-[100px] scroll-mt-[84px]">
+      <Reveal>
+        <p className="mb-3.5 font-mono text-xs uppercase tracking-[0.22em] text-[#60a5fa]">
+          {t.skills.eyebrow}
+        </p>
+        <h2 className="mb-12 font-display text-[clamp(1.9rem,4vw,2.7rem)] font-semibold tracking-[-0.02em] text-[#f1f5f9]">
+          {t.skills.heading}
+        </h2>
+      </Reveal>
+
+      <Reveal className="grid gap-[18px] [grid-template-columns:repeat(auto-fill,minmax(280px,1fr))]">
+        {skillGroups.map((group) => (
+          <div
+            key={group.key}
+            className="rounded-2xl border border-slate-400/[0.12] bg-slate-900/50 p-6 transition-colors duration-300 hover:border-[#60a5fa]/35"
           >
-            <h3 className="mb-4 font-display text-sm font-semibold uppercase tracking-wider text-slate-300">
-              {group.label}
-            </h3>
+            <p className="mb-4 flex items-center gap-[9px] font-display text-[15px] font-semibold text-slate-200">
+              <span className="h-[7px] w-[7px] rounded-[2px] bg-[#3b82f6]" />
+              {t.skills[group.key]}
+            </p>
             <div className="flex flex-wrap gap-2">
-              {group.items.map((skill) => (
-                <SkillPill key={skill}>{skill}</SkillPill>
+              {group.items.map((item) => (
+                <span
+                  key={item}
+                  className="rounded-lg border border-slate-400/[0.14] bg-slate-800/50 px-2.5 py-[5px] font-mono text-[11.5px] text-slate-300"
+                >
+                  {item}
+                </span>
               ))}
             </div>
-          </motion.div>
+          </div>
         ))}
-      </div>
-    </SectionShell>
+      </Reveal>
+    </section>
   )
 }

@@ -1,56 +1,77 @@
 import { motion } from 'framer-motion'
-import { Button } from '../components/Button'
-import { hero } from '../data/site'
+import { useLanguage } from '../context/LanguageContext'
+import { CodeWindow } from '../components/CodeWindow'
+import { SocialLinks } from '../components/SocialLinks'
 
 export function HeroSection() {
-  const go = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-  }
+  const { t } = useLanguage()
 
   return (
     <section
       id="inicio"
-      className="relative flex min-h-[100dvh] items-center scroll-mt-24 pt-20"
+      className="relative flex min-h-[100dvh] items-center overflow-hidden px-6 pb-20 pt-[120px] scroll-mt-[84px]"
     >
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -left-32 top-24 h-72 w-72 rounded-full bg-blue-600/15 blur-[100px]" />
-        <div className="absolute right-0 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-sky-500/10 blur-[120px]" />
-        <div className="absolute bottom-20 left-1/3 h-64 w-64 rounded-full bg-indigo-600/10 blur-[90px]" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div className="absolute -left-[140px] top-[120px] h-[340px] w-[340px] rounded-full bg-[#2563eb]/[0.16] blur-[110px]" />
+        <div className="absolute -right-20 top-[42%] h-[420px] w-[420px] rounded-full bg-[#38bdf8]/10 blur-[130px]" />
+        <div className="absolute bottom-[60px] left-[32%] h-[300px] w-[300px] rounded-full bg-[#4f46e5]/[0.12] blur-[110px]" />
       </div>
 
-      <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto grid w-full max-w-[1140px] grid-cols-[1.25fr_0.75fr] items-center gap-12 max-[860px]:grid-cols-1">
         <motion.div
-          initial={{ opacity: 0, y: 28 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-3xl"
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="mb-4 font-display text-xs font-semibold uppercase tracking-[0.22em] text-blue-400/85">
-            Portfólio
+          <div className="mb-[26px] inline-flex items-center gap-[9px] rounded-full border border-[#60a5fa]/30 bg-[#2563eb]/[0.08] px-3.5 py-[7px]">
+            <span className="h-2 w-2 rounded-full bg-[#34d399] shadow-[0_0_0_3px_rgba(52,211,153,0.2)]" />
+            <span className="font-mono text-[11.5px] tracking-[0.06em] text-slate-300">
+              {t.hero.status}
+            </span>
+          </div>
+
+          <p className="mb-4 font-mono text-[12.5px] uppercase tracking-[0.24em] text-[#60a5fa]">
+            {t.hero.eyebrow}
           </p>
-          <h1 className="font-display text-3xl font-semibold leading-tight tracking-tight text-slate-100 sm:text-4xl md:text-5xl lg:text-[3.25rem]">
-            {hero.name}
+          <h1 className="m-0 font-display text-[clamp(2.6rem,6.5vw,4.4rem)] font-bold leading-[1.02] tracking-[-0.03em] text-[#f1f5f9]">
+            João Vitor
+            <br />
+            Andrade
           </h1>
-          <p className="mt-4 font-display text-lg text-blue-300/90 sm:text-xl md:text-2xl">
-            {hero.title}
+          <p className="mt-5 font-display text-[clamp(1.1rem,2.4vw,1.6rem)] font-medium tracking-[-0.01em] text-[#60a5fa]">
+            {t.hero.role}
           </p>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-400 sm:text-lg">
-            {hero.description}
+          <p className="mt-[22px] max-w-[520px] text-[16.5px] leading-[1.7] text-slate-400 [text-wrap:pretty]">
+            {t.hero.desc}
           </p>
 
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <Button type="button" onClick={() => go('projetos')}>
-              Ver projetos
-            </Button>
-            <Button
-              type="button"
-              variant="secondary"
-              onClick={() => go('contato')}
+          <div className="mt-[34px] flex flex-wrap gap-3.5">
+            <a
+              href="#projetos"
+              className="inline-flex items-center gap-[9px] rounded-xl bg-[#2563eb] px-6 py-[13px] font-display text-[15px] font-semibold text-[#f8fafc] no-underline shadow-[0_16px_36px_-16px_rgba(37,99,235,0.9)] transition-[background,transform] duration-200 hover:-translate-y-0.5 hover:bg-[#3b82f6]"
             >
-              Contato
-            </Button>
+              {t.hero.ctaProjects} <span>→</span>
+            </a>
+            <a
+              href="#contato"
+              className="inline-flex items-center gap-[9px] rounded-xl border border-slate-400/20 bg-slate-900/60 px-6 py-[13px] font-display text-[15px] font-semibold text-slate-200 no-underline transition-all duration-200 hover:border-[#60a5fa]/60 hover:bg-slate-900/90"
+            >
+              {t.hero.ctaContact}
+            </a>
+          </div>
+
+          <div className="mt-[34px]">
+            <SocialLinks size="hero" />
           </div>
         </motion.div>
+
+        <div className="flex items-center justify-center max-[860px]:hidden">
+          <CodeWindow />
+        </div>
+      </div>
+
+      <div className="absolute bottom-[26px] left-1/2 -translate-x-1/2 font-mono text-[10.5px] uppercase tracking-[0.2em] text-[#475569]">
+        scroll ↓
       </div>
     </section>
   )
