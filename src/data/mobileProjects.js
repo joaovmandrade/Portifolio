@@ -1,3 +1,5 @@
+import molucro from '../assets/molucro.png'
+
 /**
  * PROJETOS MOBILE
  * ---------------
@@ -114,7 +116,7 @@ export const mobileProjects = [
       "Cloud Sync",
     ],
     platform: "Cross-platform",
-    image: "",
+    image: molucro,
     storeUrl: "",
     repoUrl: "https://github.com/joaovmandrade/mo_lucro",
   },
