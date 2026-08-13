@@ -1,8 +1,22 @@
+import { useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+
+/** Pega `campo` respeitando a variante `campoEn` quando o idioma é inglês. */
+function pick(obj, key, lang) {
+  const en = obj?.[`${key}En`]
+  if (lang === 'en' && en != null && (!Array.isArray(en) || en.length)) return en
+  return obj?.[key]
+}
+
 /**
  * Card de projeto com moldura de navegador (web) ou celular (mobile).
  * `layout`: 'row' (linha, padrão) | 'feature' | 'grid'
+ *
+ * Quando o projeto traz `overview`, `stack`, `features` ou `highlights`,
+ * o card ganha um botão que abre o painel de detalhes completo.
  */
 export function ProjectCard({ project, layout = 'row', lang = 'pt' }) {
+  const [open, setOpen] = useState(false)
   const isMobile = project.kind === 'mobile'
   const hasImage = Boolean(project.image && String(project.image).trim())
   const isRow = layout === 'row'
@@ -28,6 +42,31 @@ export function ProjectCard({ project, layout = 'row', lang = 'pt' }) {
       ? 'View project'
       : 'Ver projeto'
   const hasRepo = Boolean(project.repoUrl && String(project.repoUrl).trim())
+
+  // ---- Conteúdo opcional do painel de detalhes ----
+  const localizedCategory = pick(project, 'category', lang)
+  const categories = Array.isArray(localizedCategory) ? localizedCategory : []
+  const role = pick(project, 'role', lang)
+  const tagline = pick(project, 'tagline', lang)
+  const overview = pick(project, 'overview', lang) || []
+  const stack = project.stack || []
+  const features = project.features || []
+  const highlights = pick(project, 'highlights', lang) || []
+  const hasDetails = Boolean(
+    overview.length || stack.length || features.length || highlights.length,
+  )
+  const detailsLabel = open
+    ? lang === 'en'
+      ? 'Hide details'
+      : 'Ocultar detalhes'
+    : lang === 'en'
+      ? 'View details'
+      : 'Ver detalhes'
+  const stackLabel = lang === 'en' ? 'Stack' : 'Stack'
+  const highlightsLabel = lang === 'en' ? 'Technical highlights' : 'Diferenciais técnicos'
+  const eyebrowText = [kindLabel, ...categories].join(' • ')
+  const sectionTitle = 'font-mono text-[10.5px] uppercase tracking-[0.18em] text-[#60a5fa]'
+  const divider = 'h-px w-full bg-slate-400/[0.08]'
 
   const titleSize = isFeature ? '24px' : isRow ? '22px' : '19px'
 
@@ -94,7 +133,7 @@ export function ProjectCard({ project, layout = 'row', lang = 'pt' }) {
                       📱
                     </div>
                     <span className="px-4 text-center font-mono text-[10px] uppercase tracking-[0.12em] text-[#64748b]">
-                      print do app aqui
+                      {lang === 'en' ? 'screenshot coming soon' : 'print em breve'}
                     </span>
                   </div>
                 )}
@@ -145,9 +184,7 @@ export function ProjectCard({ project, layout = 'row', lang = 'pt' }) {
       {/* META */}
       <div className={`relative z-[1] flex flex-col gap-3.5 ${metaClasses}`}>
         <div className="flex items-center gap-2.5">
-          <span className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-[#60a5fa]">
-            {kindLabel}
-          </span>
+          <span className={sectionTitle}>{eyebrowText}</span>
           <span className="h-px flex-1 bg-gradient-to-r from-[#60a5fa]/35 to-transparent" />
         </div>
 
@@ -158,6 +195,12 @@ export function ProjectCard({ project, layout = 'row', lang = 'pt' }) {
           >
             {project.title}
           </h3>
+          {role ? (
+            <p className="m-0 mt-[9px] inline-flex items-center gap-2 rounded-full border border-[#60a5fa]/30 bg-[#2563eb]/[0.12] px-3 py-[5px] font-mono text-[11px] leading-[1.4] tracking-[0.02em] text-[#bfdbfe]">
+              <span className="h-[5px] w-[5px] shrink-0 rounded-full bg-[#60a5fa]" />
+              {role}
+            </p>
+          ) : null}
           <p className="mt-2.5 text-[14.5px] leading-[1.65] text-slate-400 [text-wrap:pretty]">
             {project.description}
           </p>
@@ -199,8 +242,143 @@ export function ProjectCard({ project, layout = 'row', lang = 'pt' }) {
               GitHub
             </a>
           ) : null}
+          {hasDetails ? (
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              aria-expanded={open}
+              className="inline-flex cursor-pointer items-center gap-2 rounded-[10px] border border-[#60a5fa]/25 bg-[#2563eb]/[0.08] px-4 py-2.5 font-display text-[13.5px] font-semibold text-[#bfdbfe] transition-[border-color,background,color] duration-200 hover:border-[#60a5fa]/55 hover:bg-[#2563eb]/[0.16] hover:text-[#dbeafe]"
+            >
+              {detailsLabel}
+              <span
+                className="inline-flex transition-transform duration-300"
+                style={{ transform: open ? 'rotate(180deg)' : 'rotate(0deg)' }}
+              >
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </span>
+            </button>
+          ) : null}
         </div>
       </div>
+
+      {/* PAINEL DE DETALHES (ocupa a linha inteira do card) */}
+      {hasDetails ? (
+        <div className="relative z-[1] w-full min-[640px]:basis-full">
+          <AnimatePresence initial={false}>
+            {open ? (
+              <motion.div
+                key="details"
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                className="overflow-hidden"
+              >
+                <div
+                  className="flex flex-col gap-6 rounded-[16px] border border-slate-400/[0.1] p-5 min-[640px]:p-6"
+                  style={{ background: 'rgba(2,6,23,0.5)' }}
+                >
+                  {tagline ? (
+                    <p className="m-0 border-l-2 border-[#60a5fa]/45 pl-4 font-display text-[15.5px] leading-[1.6] tracking-[-0.005em] text-slate-300 [text-wrap:pretty]">
+                      {tagline}
+                    </p>
+                  ) : null}
+
+                  {overview.length ? (
+                    <div className="flex flex-col gap-3">
+                      {overview.map((para, i) => (
+                        <p
+                          key={i}
+                          className="m-0 text-[14px] leading-[1.75] text-slate-400 [text-wrap:pretty]"
+                        >
+                          {para}
+                        </p>
+                      ))}
+                    </div>
+                  ) : null}
+
+                  {stack.length ? (
+                    <>
+                      <span className={divider} />
+                      <div className="flex flex-col gap-3.5">
+                        <span className={sectionTitle}>{stackLabel}</span>
+                        {stack.map((group) => (
+                          <div
+                            key={group.label}
+                            className="flex flex-col gap-2 min-[560px]:flex-row min-[560px]:gap-4"
+                          >
+                            <span className="pt-[3px] font-mono text-[10.5px] uppercase tracking-[0.14em] text-[#64748b] min-[560px]:w-[104px] min-[560px]:shrink-0">
+                              {pick(group, 'label', lang)}
+                            </span>
+                            <ul className="m-0 flex list-none flex-wrap gap-[6px] p-0">
+                              {(pick(group, 'items', lang) || []).map((item) => (
+                                <li
+                                  key={item}
+                                  className="rounded-[6px] border border-slate-400/[0.12] bg-slate-800/40 px-2 py-[3px] font-mono text-[10.5px] text-slate-300"
+                                >
+                                  {item}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    </>
+                  ) : null}
+
+                  {features.length ? (
+                    <>
+                      <span className={divider} />
+                      <div className="grid grid-cols-1 gap-6 min-[560px]:grid-cols-2">
+                        {features.map((group) => (
+                          <div key={group.label} className="flex flex-col gap-3">
+                            <span className={sectionTitle}>{pick(group, 'label', lang)}</span>
+                            <ul className="m-0 flex list-none flex-col gap-2 p-0">
+                              {(pick(group, 'items', lang) || []).map((item) => (
+                                <li
+                                  key={item}
+                                  className="flex gap-2.5 text-[13.5px] leading-[1.5] text-slate-400"
+                                >
+                                  <span className="mt-[7px] h-[5px] w-[5px] shrink-0 rounded-full bg-[#60a5fa]/70" />
+                                  {item}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    </>
+                  ) : null}
+
+                  {highlights.length ? (
+                    <>
+                      <span className={divider} />
+                      <div className="flex flex-col gap-3">
+                        <span className={sectionTitle}>{highlightsLabel}</span>
+                        <ul className="m-0 grid list-none grid-cols-1 gap-2 p-0 min-[560px]:grid-cols-2">
+                          {highlights.map((item) => (
+                            <li
+                              key={item}
+                              className="flex gap-2 text-[13.5px] leading-[1.5] text-slate-400"
+                            >
+                              <span className="font-mono text-[13px] leading-[1.4] text-[#60a5fa]/80">
+                                ›
+                              </span>
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </>
+                  ) : null}
+                </div>
+              </motion.div>
+            ) : null}
+          </AnimatePresence>
+        </div>
+      ) : null}
     </article>
   )
 }

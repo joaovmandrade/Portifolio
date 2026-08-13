@@ -3,7 +3,7 @@ import { Reveal } from '../components/Reveal'
 import { skillGroups } from '../data/i18n'
 
 export function SkillsSection() {
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
 
   return (
     <section id="habilidades" className="relative mx-auto max-w-[1140px] px-6 py-[100px] scroll-mt-[84px]">
@@ -27,7 +27,7 @@ export function SkillsSection() {
               {t.skills[group.key]}
             </p>
             <div className="flex flex-wrap gap-2">
-              {group.items.map((item) => (
+              {(lang === 'en' && group.itemsEn ? group.itemsEn : group.items).map((item) => (
                 <span
                   key={item}
                   className="rounded-lg border border-slate-400/[0.14] bg-slate-800/50 px-2.5 py-[5px] font-mono text-[11.5px] text-slate-300"

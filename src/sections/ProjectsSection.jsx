@@ -53,7 +53,7 @@ export function ProjectsSection() {
           </h2>
         </Reveal>
 
-        <div className="mb-3 flex flex-wrap items-center justify-between gap-4">
+        <div className="mb-[30px] flex flex-wrap items-center justify-between gap-4">
           <div className="flex flex-wrap gap-[9px]">
             <button type="button" onClick={() => selectFilter('web')} className={pill(filter === 'web')}>
               {t.projects.web} <span className={badge(filter === 'web')}>{web.length}</span>
@@ -63,13 +63,14 @@ export function ProjectsSection() {
             </button>
           </div>
         </div>
-        <p className="mb-[30px] flex items-center gap-[7px] font-mono text-[11px] text-[#64748b]">
-          <span className="text-[13px]">📱</span> {t.projects.note}
-        </p>
-
         <div className="grid grid-cols-1 gap-5">
           {filtered.map((proj) => (
-            <ProjectCard key={proj.id} project={proj} layout="row" lang={lang} />
+            <ProjectCard
+              key={proj.id}
+              project={proj}
+              layout={proj.featured ? 'feature' : 'row'}
+              lang={lang}
+            />
           ))}
         </div>
 

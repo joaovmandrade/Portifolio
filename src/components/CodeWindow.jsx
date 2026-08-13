@@ -1,7 +1,7 @@
 function Line({ n, children }) {
   return (
     <div className="flex gap-4">
-      <span className="w-4 flex-none select-none text-right text-[#334155]">{n}</span>
+      <span className="w-5 flex-none select-none text-right text-[#334155]">{n}</span>
       {children}
     </div>
   )
@@ -62,42 +62,50 @@ export function CodeWindow() {
             <Line n="3">
               <span className="pl-[18px]">
                 <span className="text-[#38bdf8]">role</span>
-                <span className="text-[#64748b]">:</span> <span className="text-[#34d399]">'Full Stack Dev'</span>
+                <span className="text-[#64748b]">:</span> <span className="text-[#34d399]">'Co-founder & CTO'</span>
                 <span className="text-[#64748b]">,</span>
               </span>
             </Line>
             <Line n="4">
               <span className="pl-[18px]">
+                <span className="text-[#38bdf8]">building</span>
+                <span className="text-[#64748b]">:</span> <span className="text-[#34d399]">'Combinas'</span>
+                <span className="text-[#64748b]">,</span>
+              </span>
+            </Line>
+            <Line n="5">
+              <span className="pl-[18px]">
                 <span className="text-[#38bdf8]">stack</span>
                 <span className="text-[#64748b]">: [</span>
               </span>
             </Line>
-            <Line n="5">
-              <span className="pl-9">
-                <span className="text-[#34d399]">'React'</span>
-                <span className="text-[#64748b]">,</span> <span className="text-[#34d399]">'Node.js'</span>
-                <span className="text-[#64748b]">,</span>
-              </span>
-            </Line>
             <Line n="6">
               <span className="pl-9">
-                <span className="text-[#34d399]">'React Native'</span>
+                <span className="text-[#34d399]">'Next.js'</span>
+                <span className="text-[#64748b]">,</span> <span className="text-[#34d399]">'Django'</span>
                 <span className="text-[#64748b]">,</span>
               </span>
             </Line>
             <Line n="7">
+              <span className="pl-9">
+                <span className="text-[#34d399]">'React Native'</span>
+                <span className="text-[#64748b]">,</span> <span className="text-[#34d399]">'IA'</span>
+                <span className="text-[#64748b]">,</span>
+              </span>
+            </Line>
+            <Line n="8">
               <span className="pl-[18px]">
                 <span className="text-[#64748b]">],</span>
               </span>
             </Line>
-            <Line n="8">
+            <Line n="9">
               <span className="pl-[18px]">
                 <span className="text-[#38bdf8]">available</span>
                 <span className="text-[#64748b]">:</span> <span className="text-[#fbbf24]">true</span>
                 <span className="text-[#64748b]">,</span>
               </span>
             </Line>
-            <Line n="9">
+            <Line n="10">
               <span>
                 <span className="text-[#64748b]">{'};'}</span>
                 <span className="ml-1 inline-block h-[15px] w-2 -translate-y-[2px] animate-[blinkCaret_1.1s_step-end_infinite] bg-[#60a5fa] align-bottom" />
